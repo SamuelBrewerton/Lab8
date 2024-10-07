@@ -65,7 +65,9 @@ public class Calculator extends Application {
 
     //6. 3. Lambda expression mulBtn
     mulBtn.setOnAction(event -> setResult(getFirstNumber() * getSecondNumber()));
-        
+    
+    //6. 4. Lambda expression divBtn
+    divBtn.setOnAction(event -> setResult(getFirstNumber() / getSecondNumber()));
 
     }
     //6. 1. Event Handler for Addbtn using inner class.
