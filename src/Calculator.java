@@ -55,9 +55,20 @@ public class Calculator extends Application {
     //  5. Define event Handlers
     addBtn.setOnAction(new AddHandler());
 
-    }
+    //6. 2. Anonymous inner class subBtn
+        subBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                setResult(getFirstNumber() - getSecondNumber());
+            }
+        });
 
-    //1. Event Handler for Addbtn using inner class.
+    //6. 3. Lambda expression mulBtn
+    mulBtn.setOnAction(event -> setResult(getFirstNumber() * getSecondNumber()));
+        
+
+    }
+    //6. 1. Event Handler for Addbtn using inner class.
     private class AddHandler implements EventHandler<ActionEvent>{
         @Override
         public void handle(ActionEvent event) {
