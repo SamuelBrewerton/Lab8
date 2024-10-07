@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
@@ -16,6 +17,7 @@ public class Calculator extends Application {
     private TextField firstNumberTf;
     private Label secondNumberLbl;
     private TextField secondNumberTf;
+    private TextField second;
     private Label operationLbl;
     private Button addBtn;
     private Button subBtn;
@@ -31,7 +33,8 @@ public class Calculator extends Application {
         firstNumberTf = new TextField("");
         secondNumberLbl = new Label("Second Number:");
         secondNumberTf = new TextField("");
-        operationLbl = new Label("operation:");
+        second = new TextField("");
+        operationLbl = new Label("Operation:");
         addBtn = new Button("+");
         subBtn = new Button("-");
         mulBtn = new Button("*");
@@ -42,13 +45,37 @@ public class Calculator extends Application {
 
 
     // 2. create the branch node
-    HBox box = new HBox(10, firstNumberLbl, firstNumberTf, secondNumberLbl, 
-    secondNumberTf, operationLbl, addBtn, subBtn, mulBtn, divBtn, resultLbl, resultTf);
-    box.setAlignment(Pos.CENTER);
+    //VBox box = new VBox(10, firstNumberLbl, firstNumberTf, secondNumberLbl, secondNumberTf, operationLbl, addBtn, subBtn, mulBtn, divBtn, resultLbl, resultTf);
+    //box.setAlignment(Pos.CENTER);
+
+    // 7 . Create gridpane to modify GUI layout
+    GridPane gridPane = new GridPane();
+    gridPane.setPadding(new Insets(10,10,10,10)); //10 pixel padding
+    gridPane.setHgap(10); //horizontal spacing
+    gridPane.setVgap(10); //vertical spacing
+    gridPane.setAlignment(Pos.CENTER);
+    //grid pane cell positions are like a matrix: https://www.tutorialspoint.com/javafx/layout_gridpane.html 
+    gridPane.add(firstNumberLbl,0,0);
+    gridPane.add(firstNumberTf,1,0);
+
+    gridPane.add(secondNumberLbl,0,1);
+    gridPane.add(secondNumberTf,1,1);
+    gridPane.add(second,2,1); //delete this when done fixing buttons.
+
+    //TODO: fix buttons aligning with columns and not being placed directly next to each other.
+    gridPane.add(operationLbl,0,2);
+    gridPane.add(addBtn,1,2);
+    gridPane.add(subBtn,2,2);
+    gridPane.add(mulBtn,3,2);
+    gridPane.add(divBtn,4,2);
+
+    gridPane.add(resultLbl, 0,3);
+    gridPane.add(resultTf, 1,3);
+
 
 
     // 3. set the scene, show the stage
-    stage.setScene(new Scene(box));
+    stage.setScene(new Scene(gridPane));
     stage.setTitle("Calculator");
     stage.show();
 
@@ -77,7 +104,6 @@ public class Calculator extends Application {
             setResult(getFirstNumber() + getSecondNumber());
         }
     }
-
 
         //  4. Getters and Setters
     public int getFirstNumber() {
