@@ -17,7 +17,6 @@ public class Calculator extends Application {
     private TextField firstNumberTf;
     private Label secondNumberLbl;
     private TextField secondNumberTf;
-    private TextField second;
     private Label operationLbl;
     private Button addBtn;
     private Button subBtn;
@@ -33,7 +32,6 @@ public class Calculator extends Application {
         firstNumberTf = new TextField("");
         secondNumberLbl = new Label("Second Number:");
         secondNumberTf = new TextField("");
-        second = new TextField("");
         operationLbl = new Label("Operation:");
         addBtn = new Button("+");
         subBtn = new Button("-");
@@ -50,24 +48,27 @@ public class Calculator extends Application {
 
     // 7 . Create gridpane to modify GUI layout
     GridPane gridPane = new GridPane();
+    //There is no padding in lab image however earlier it says to make a vbox with 10 pixel  padding so im keeping this:
     gridPane.setPadding(new Insets(10,10,10,10)); //10 pixel padding
-    gridPane.setHgap(10); //horizontal spacing
-    gridPane.setVgap(10); //vertical spacing
+    //In lab instruction image there is no spacing however looks better with 10 pixels spacing.
+    //gridPane.setHgap(10); //horizontal spacing
+    //gridPane.setVgap(10); //vertical spacing
     gridPane.setAlignment(Pos.CENTER);
-    //grid pane cell positions are like a matrix: https://www.tutorialspoint.com/javafx/layout_gridpane.html 
+    //grid pane cell positions are like a matrix: 
+    /*
+     * 0,0 | 1,0 | 2,0
+     * 0,1 | 1,1 | 2,1
+     * 0,2 | 1,2 | 2,2
+     */
     gridPane.add(firstNumberLbl,0,0);
     gridPane.add(firstNumberTf,1,0);
 
     gridPane.add(secondNumberLbl,0,1);
     gridPane.add(secondNumberTf,1,1);
-    gridPane.add(second,2,1); //delete this when done fixing buttons.
 
-    //TODO: fix buttons aligning with columns and not being placed directly next to each other.
     gridPane.add(operationLbl,0,2);
-    gridPane.add(addBtn,1,2);
-    gridPane.add(subBtn,2,2);
-    gridPane.add(mulBtn,3,2);
-    gridPane.add(divBtn,4,2);
+    HBox box = new HBox(10,addBtn,subBtn,mulBtn,divBtn); //Using hbox then add it to gridpane to get buttons next to each other.
+    gridPane.add(box,1,2);
 
     gridPane.add(resultLbl, 0,3);
     gridPane.add(resultTf, 1,3);
