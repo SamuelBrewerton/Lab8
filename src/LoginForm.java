@@ -18,7 +18,7 @@ public class LoginForm extends Application{
     private Label usernameLbl;
     private TextField usernameTf;
     private Label passwordLbl;
-    private TextField passwordTf; //Use regular textfield for password?
+    private PasswordField passwordPf; //Use regular textfield for password?
     private Button loginBtn;
     
     //TODO: Someone said on ed that password correct message is not using label. Check it out.
@@ -29,7 +29,7 @@ public class LoginForm extends Application{
         usernameLbl = new Label("Username:");
         usernameTf = new TextField("");
         passwordLbl = new Label("Password:");
-        passwordTf = new TextField("");
+        passwordPf = new PasswordField();
         loginBtn = new Button("Login");
 
         GridPane gridPane = new GridPane();
@@ -40,7 +40,7 @@ public class LoginForm extends Application{
         gridPane.add(usernameTf, 1, 0);
 
         gridPane.add(passwordLbl, 0, 1);
-        gridPane.add(passwordTf, 1, 1);
+        gridPane.add(passwordPf, 1, 1);
 
         gridPane.add(loginBtn, 1, 2);
 
