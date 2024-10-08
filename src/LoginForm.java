@@ -13,6 +13,8 @@ public class LoginForm extends Application{
         launch(args);
     }
 
+
+    //test message
     private Label usernameLbl;
     private TextField usernameTf;
     private Label passwordLbl;
