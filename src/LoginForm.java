@@ -14,7 +14,7 @@ public class LoginForm extends Application{
     }
 
 
-    //test message
+    
     private Label usernameLbl;
     private TextField usernameTf;
     private Label passwordLbl;
